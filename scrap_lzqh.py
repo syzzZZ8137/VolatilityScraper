@@ -5,28 +5,22 @@ Created on Fri Oct 19 16:04:08 2018
 @author: gxjy-003 yizhou
 """
 
-# -*- coding: utf-8 -*-
-# @Time    : 2018/10/19 14:24
-# @Author  : Xin Zhang
-# @File    : test_scrap.py
-
 import requests
 import pandas as pd
 from lxml import etree
 from selenium import webdriver
 import datetime as dt
-import time
-#import MySQLdb
-
-#option = webdriver.ChromeOptions()
-#option.add_argument('headless')
 
 #打开网页
+#option = webdriver.ChromeOptions()
+#option.add_argument('headless')
 #brs = webdriver.Chrome(options=option)
-brs = webdriver.Chrome()
-brs.get('http://www.luzhengqh.com/rest/weixin/otcpricelist') #网页地址
-brs.implicitly_wait(2)
 
+#打开网页
+brs = webdriver.Chrome()
+URL = 'http://www.luzhengqh.com/rest/weixin/otcpricelist' #网页地址
+brs.get(URL) 
+brs.implicitly_wait(2)
 request_URL = 'http://www.luzhengqh.com/rest/weixin/getOptionPrice'
 
 #
@@ -62,6 +56,8 @@ def parse_symbol_month(contractcode):
         i += 1
     return symbol, expiry_month
 #symbol, expiry_month = parse_symbol_month(contractcode)
+    
+
 
 #contractcode = 'A1901'; expiryDate = '2018-11-22'
 def fetch_contract_quotes(contractcode, expiryDate):
